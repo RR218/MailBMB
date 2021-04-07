@@ -106,18 +106,18 @@ class mail_bmbr:
             elif self.server == 3:
                 self.server = "smtp-mail.outlook.com"
 
-            self.fromAdder = str(input(colorama.Fore.GREEN + "\n\n  Enter from address : "))
+            self.fromAddr = str(input(colorama.Fore.GREEN + "\n\n  Enter from address : "))
             self.fromPwd = str(input(colorama.Fore.GREEN + "\n\n  Enter from password : "))
             self.subject = str(input(colorama.Fore.GREEN + "\n\n  Enter subject : "))
             self.message = str(input(colorama.Fore.GREEN + "\n\n  Enter message : "))
 
             self.msg = '''From: %s\nTo: %s\nSubject %s\n%s\n
-            ''' % (self.fromAdder, self.target, self.subject, self.message)
+            ''' % (self.fromAddr, self.target, self.subject, self.message)
             self.s = smtplib.SMTP(self.server, self.port)
             self.s.ehlo()
             self.s.starttls()
             self.s.ehlo()
-            self.s.login(self.fromAdder, self.fromPwd)
+            self.s.login(self.fromAddr, self.fromPwd)
 
         except Exception as e:
             print(colorama.Fore.RED + f"\n  ERROR 4: {e}")
@@ -125,7 +125,7 @@ class mail_bmbr:
 
     def send(self):
         try:
-            self.s.sendmail(self.fromAdder, self.target, self.msg)
+            self.s.sendmail(self.fromAddr, self.target, self.msg)
             self.count += 1
             print(colorama.Fore.YELLOW + f"BMB: {self.count}")
         except Exception as e:
