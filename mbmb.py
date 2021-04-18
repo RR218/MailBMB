@@ -3,6 +3,7 @@ import colorama
 import smtplib
 import sys
 import time
+from getpass import getpass
 
 colorama.init(autoreset=True)
 
@@ -107,7 +108,7 @@ class mail_bmbr:
                 self.server = "smtp-mail.outlook.com"
 
             self.fromAddr = str(input(colorama.Fore.GREEN + "\n\n  Enter from address : "))
-            self.fromPwd = str(input(colorama.Fore.GREEN + "\n\n  Enter from password : "))
+            self.fromPwd = str(getpass(colorama.Fore.GREEN + "\n\n  Enter from password : "))
             self.subject = str(input(colorama.Fore.GREEN + "\n\n  Enter subject : "))
             self.message = str(input(colorama.Fore.GREEN + "\n\n  Enter message : "))
 
